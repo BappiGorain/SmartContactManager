@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Signup Page</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+    <link ref="stylesheet" data-th-href="@{'output.css'}">
+
+</head>
+<body>
+
+<div id="content flex justify-center">
+
+
+    <div class="grid grid-cols-12 ">
+
+        <div class="col-span-4 md:col-span-2 lg:col-span-3 xl:col-span-4">
+
+        <div class="col-span-12 md:col-span-8 lg:col-span-6 xl:col-span-4">
+
+            <!--    card -->
+
+            <div  class="block max-w-sm  p-6 border-t-[10px] border-yellow-700  bg-white border rounded-xl shadow-sm hover:bg-gray-10 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">signup here</h5>
+                <p class="font-normal text-gray-700 dark:text-gray-400">start managing contacts on cloud ...</p>
+
+                <form data-th-action="@{'/do-register'}" method="post" data-th-object="${userForm}" class="mt-5">
+
+                    <!--  Name -->
+
+                    <div class="mb-5">
+                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+                        <input type="text" id="name"
+                               data-th-field="*{name}"
+                               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter here" required />
+                    </div>
+
+                    <!--  Email -->
+
+                    <div class="mb-3">
+                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                        <input type="email"
+                               data-th-field="*{email}"
+                               id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="abc@gmail.com" required />
+                    </div>
+
+                    <!--  password -->
+
+                    <div class="mb-3">
+                        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                        <input type="password"
+                               data-th-field="*{password}"
+                               id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="password" required />
+                    </div>
+
+                    <!--  phone -->
+
+                    <div class="mb-3">
+                        <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone Number</label>
+                        <input type="text"
+                               data-th-field="*{phoneNumber}"
+                               id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Contact Number" required />
+                    </div>
+
+
+                    <!--  about -->
+                    <div class="mb-3 ">
+
+                        <label for="about" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Write something about you </label>
+                        <textarea
+                                data-th-field="*{about}"
+                                id="about" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write here..."></textarea>
+
+                    </div>
+
+                    <!--  Button   -->
+                    <div class="mb-3 flex justify-center space-x-3">
+                        <button type="submit" class="px-3 py-2 rounded bg-blue-800 text-white">Signup</button>
+                        <button type="reset" class="px-3 py-2 rounded bg-yellow-800 text-white">Reset</button>
+                    </div>
+
+
+
+                </form>
+
+            </div>
+
+        </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    console.log("Signup page");
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+</body>
+</html>

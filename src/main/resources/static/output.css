@@ -1,0 +1,99 @@
+/*! tailwindcss v4.1.6 | MIT License | https://tailwindcss.com */
+@layer properties;
+.static {
+  position: static;
+}
+.col-span-4 {
+  grid-column: span 4 / span 4;
+}
+.col-span-12 {
+  grid-column: span 12 / span 12;
+}
+.container {
+  width: 100%;
+}
+.mx-auto {
+  margin-inline: auto;
+}
+.block {
+  display: block;
+}
+.flex {
+  display: flex;
+}
+.grid {
+  display: grid;
+}
+.inline-flex {
+  display: inline-flex;
+}
+.w-1\/2 {
+  width: calc(1/2 * 100%);
+}
+.w-full {
+  width: 100%;
+}
+.grid-cols-12 {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+.flex-col {
+  flex-direction: column;
+}
+.items-center {
+  align-items: center;
+}
+.justify-center {
+  justify-content: center;
+}
+.border {
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+}
+.border-t-8 {
+  border-top-style: var(--tw-border-style);
+  border-top-width: 8px;
+}
+.border-t-\[7px\] {
+  border-top-style: var(--tw-border-style);
+  border-top-width: 7px;
+}
+.border-t-\[10px\] {
+  border-top-style: var(--tw-border-style);
+  border-top-width: 10px;
+}
+.border-t-\[18\] {
+  border-top-style: var(--tw-border-style);
+  border-top-width: 18;
+}
+.border-t-\[50px\] {
+  border-top-style: var(--tw-border-style);
+  border-top-width: 50px;
+}
+.border-t-\[118px\] {
+  border-top-style: var(--tw-border-style);
+  border-top-width: 118px;
+}
+.hover\:underline {
+  &:hover {
+    @media (hover: hover) {
+      text-decoration-line: underline;
+    }
+  }
+}
+.rtl\:rotate-\[270deg\] {
+  &:where(:dir(rtl), [dir="rtl"], [dir="rtl"] *) {
+    rotate: 270deg;
+  }
+}
+@property --tw-border-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
+@layer properties {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
+      --tw-border-style: solid;
+    }
+  }
+}

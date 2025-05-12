@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -46,7 +47,6 @@ public class PageController
 
 //    processing register
 
-
     @RequestMapping(value = "/do-register",method=RequestMethod.POST)
     public String processRegister(@ModelAttribute UserForm userForm)
     {
@@ -77,7 +77,7 @@ public class PageController
         user.setPassword(userForm.getPassword());
         user.setAbout(userForm.getAbout());
         user.setPhoneNumber(userForm.getPhoneNumber());
-        user.setProfilePic("https://www.google.com/url?sa=i&url=https%3A%2F%2Fuxwing.com%2Fdefault-profile-picture-male-icon%2F&psig=AOvVaw2B3DtIDI0N-u1sV-jZX1oL&ust=1747056546697000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCJDalvvCm40DFQAAAAAdAAAAABAE");
+        user.setProfilePic("https://i.pinimg.com/736x/15/0f/a8/150fa8800b0a0d5633abc1d1c4db3d87.jpg");
 
 
         userService.saveUser(user);
@@ -87,7 +87,35 @@ public class PageController
 
         // message = "Successful"
         // redirect to login page
-        return "redirect:/register";
+        return "redirect:/login-message";
+    }
+
+
+//    @PostMapping("/login-message")
+//    public String loginMessage()
+//    {
+//
+//        // redirect page after 3 seconds
+//
+//        try
+//        {
+//            Thread.sleep(3000);
+//        }
+//        catch (InterruptedException e)
+//        {
+//            System.out.println("Some error has occurred at backend side");
+//        }
+//
+//
+//        return "redirect:/register";
+//    }
+
+
+    @RequestMapping("/login-message")
+    public String loginMessagePage()
+    {
+        System.out.println("Message page");
+        return "message";
     }
 
 }

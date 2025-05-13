@@ -36,6 +36,17 @@
                         <input type="text" id="name"
                                data-th-field="*{name}"
                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter here" required />
+
+
+                        <!--  error checking -->
+                        <p
+                           data-th-if="${#fields.hasErrors('name')}"
+                           data-th-errors="*{name}"
+
+                           class="text-red-800 px-1 py-2">user is required
+                        </p>
+
+
                     </div>
 
                     <!--  Email -->
@@ -45,6 +56,16 @@
                         <input type="email"
                                data-th-field="*{email}"
                                id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="abc@gmail.com" required />
+
+
+                        <!--  error checking -->
+                        <p
+                                data-th-if="${#fields.hasErrors('email')}"
+                                data-th-errors="*{email}"
+
+                                class="text-red-800 px-1 py-2">email is required
+                        </p>
+
                     </div>
 
                     <!--  password -->
@@ -54,6 +75,15 @@
                         <input type="password"
                                data-th-field="*{password}"
                                id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="password" required />
+
+                        <!--  error checking -->
+                        <p
+                                data-th-if="${#fields.hasErrors('password')}"
+                                data-th-errors="*{password}"
+
+                                class="text-red-800 px-1 py-2">password is required
+                        </p>
+
                     </div>
 
                     <!--  phone -->
@@ -63,6 +93,15 @@
                         <input type="text"
                                data-th-field="*{phoneNumber}"
                                id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Contact Number" required />
+
+                        <!--  error checking -->
+                        <p
+                                data-th-if="${#fields.hasErrors('phoneNumber')}"
+                                data-th-errors="*{phoneNumber}"
+
+                                class="text-red-800 px-1 py-2">PhoneNumber is required
+                        </p>
+
                     </div>
 
 
@@ -74,6 +113,14 @@
                                 data-th-field="*{about}"
                                 id="about" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write here..."></textarea>
 
+                        <!--  error checking -->
+                        <p
+                                data-th-if="${#fields.hasErrors('about')}"
+                                data-th-errors="*{about}"
+
+                                class="text-red-800 px-1 py-2">about is required
+                        </p>
+
                     </div>
 
                     <!--  Button   -->
@@ -81,8 +128,6 @@
                         <button type="submit" class="px-3 py-2 rounded bg-blue-800 text-white">Signup</button>
                         <button type="reset" class="px-3 py-2 rounded bg-yellow-800 text-white">Reset</button>
                     </div>
-
-
 
                 </form>
 

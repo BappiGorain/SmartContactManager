@@ -4,13 +4,14 @@ import com.scm.entities.User;
 import com.scm.forms.UserForm;
 
 import com.scm.services.UserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+
+import javax.naming.Binding;
 
 @Controller
 public class PageController
@@ -38,17 +39,22 @@ public class PageController
 //        userForm.setAbout("This is about you");
         model.addAttribute("userForm",userForm);
 
-
-
         System.out.println("Login page");
         return "register";
     }
 
 
+//    @GetMapping("/")
+//    public String index()
+//    {
+//        return "redirect:/register";
+//    }
+
+
 //    processing register
 
     @RequestMapping(value = "/do-register",method=RequestMethod.POST)
-    public String processRegister(@ModelAttribute UserForm userForm)
+    public String processRegister(@Valid @ModelAttribute UserForm userForm, BindingResult rBindingResult)
     {
         System.out.println("Processing registration");
 
@@ -56,6 +62,10 @@ public class PageController
         System.out.println(userForm);
 
         // validate the data
+        if(rBindingResult.hasErrors())
+        {
+            return "register";
+        }
 
 
         // save in the db
@@ -106,13 +116,12 @@ public class PageController
 //            System.out.println("Some error has occurred at backend side");
 //        }
 //
-//
 //        return "redirect:/register";
 //    }
 
 
     @RequestMapping("/login-message")
-    public String loginMessagePage()
+    public String loginMessagePage(Model model)
     {
         System.out.println("Message page");
         return "message";

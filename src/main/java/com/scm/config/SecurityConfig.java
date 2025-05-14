@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -64,9 +65,25 @@ public class SecurityConfig
         });
 
 
-        // Form default login
-        httpSecurity.formLogin(Customizer.withDefaults());
+        // Default Form default login
+//        httpSecurity.formLogin(Customizer.withDefaults());
 
+        httpSecurity.formLogin(formLogin->{
+            formLogin.loginPage("/login");
+            formLogin.loginProcessingUrl("/authenticated");
+            formLogin.successForwardUrl("/user/dashboard");
+            formLogin.failureForwardUrl("/login?error=true");
+
+            formLogin.usernameParameter("email");
+            formLogin.passwordParameter("password");
+
+        });
+
+        httpSecurity.csrf(AbstractHttpConfigurer::disable);
+        httpSecurity.logout(logoutForm->{
+           logoutForm.logoutUrl("/logout");
+           logoutForm.logoutSuccessUrl("/do-logout?logout=true");
+        });
 
 
         return httpSecurity.build();

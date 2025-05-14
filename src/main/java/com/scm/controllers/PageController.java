@@ -11,8 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.naming.Binding;
-
 @Controller
 public class PageController
 {
@@ -101,23 +99,23 @@ public class PageController
     }
 
 
-//    @PostMapping("/login-message")
-//    public String loginMessage()
-//    {
-//
-//        // redirect page after 3 seconds
-//
-//        try
-//        {
-//            Thread.sleep(3000);
-//        }
-//        catch (InterruptedException e)
-//        {
-//            System.out.println("Some error has occurred at backend side");
-//        }
-//
-//        return "redirect:/register";
-//    }
+    @PostMapping("/do-login")
+    public String loginMessage()
+    {
+
+        // redirect page after 3 seconds
+
+        try
+        {
+            Thread.sleep(3000);
+        }
+        catch (InterruptedException e)
+        {
+            System.out.println("Some error has occurred at backend side");
+        }
+
+        return "redirect:/register";
+    }
 
 
     @RequestMapping("/login-message")
@@ -126,5 +124,23 @@ public class PageController
         System.out.println("Message page");
         return "message";
     }
+
+
+    @GetMapping("/authenticate")
+    public String authenticate()
+    {
+        return "authenticate";
+    }
+
+
+    @GetMapping("/do-login")
+    public String login()
+    {
+        System.out.println("login page");
+
+        return "login";
+    }
+
+
 
 }

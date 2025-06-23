@@ -1,0 +1,19 @@
+{
+  "name": "smartcontactmanager",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev" : "npx @tailwindcss/cli -i ./src/main/resources/static/css/input.css -o ./src/main/resources/static/css/output.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.10"
+  },
+  "devDependencies": {
+    "tailwindcss": "^4.1.10"
+  },
+  "description": ""
+}

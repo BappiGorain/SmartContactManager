@@ -15,8 +15,9 @@ function changeTheme()
     changePageTheme(currentTheme,currentTheme);
 
     const changeThemeButton = document.querySelector('#theme_change_button');
-    const oldTheme = currentTheme;
+
     changeThemeButton.addEventListener("click",()=>{
+        let oldTheme = currentTheme;
         console.log("Change theme button clicked ");
 
         if(currentTheme == "dark")
@@ -30,7 +31,6 @@ function changeTheme()
 
         changePageTheme(currentTheme,oldTheme);
 
-        
 
     });
 
@@ -40,7 +40,7 @@ function changeTheme()
 
 function setTheme(theme)
 {
-    localStorage.getItem("theme",theme);
+    localStorage.setItem("theme",theme);
 }
 
 function getTheme()
@@ -55,8 +55,11 @@ function changePageTheme(theme,oldTheme)
 {
     setTheme(currentTheme);
 
-    document.querySelector('html').classList.remove(oldTheme);
+    if(oldTheme)
+    {
+        document.querySelector('html').classList.remove(oldTheme);
 
+    }
     document.querySelector('html').classList.add(theme);
 
     // Change the text of the button

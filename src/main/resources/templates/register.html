@@ -1,13 +1,93 @@
 <!DOCTYPE html>
 <html lang="en" th:replace="~{Base :: parent(~{::#content},~{::title})}">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
 </head>
-<body>
-    <div id="content">
-        <h1>Welcome to signup page</h1>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et, commodi.</p>
+
+<body class="bg-gray-100 dark:bg-gray-900">
+
+    <div id="content" class="flex justify-center items-center min-h-screen px-4 ">
+        <!-- Card -->
+        <div
+            class="w-full max-w-md p-6 bg-white border-t-8  dark:border-blue-800 rounded-lg shadow-md hover:shadow-xl dark:bg-gray-800 dark:hover:bg-gray-700 transition-all duration-300">
+            <h5 class="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center">
+                Signup Here
+            </h5>
+            <p class="text-gray-700 dark:text-gray-400 text-center">
+                Start managing contact on cloud
+            </p>
+
+            <form action="" class="mt-5">
+                <!-- Name -->
+                <div class="mb-3">
+                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+                    <input type="text" id="name"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Enter Here" required />
+                </div>
+
+                <!-- Email -->
+                <div class="mb-3">
+                    <label for="email"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                    <input type="email" id="email"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Enter Here" required />
+                </div>
+
+                <!-- Password -->
+                <div class="mb-3">
+                    <label for="password"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                    <input type="password" id="password"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Enter Here" required />
+                </div>
+
+                <!-- PhoneNumber -->
+                <div class="mb-3">
+                    <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone
+                        Number</label>
+                    <input type="text" id="phone"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Enter Here" required />
+                </div>
+
+                <!-- About -->
+
+                <div class="mb-3">
+                    <label for="about" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">About</label>
+                <textarea id="message" rows="6"
+                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Write something about yourself"></textarea>
+                </div>
+
+                <!-- Buttons -->
+
+                <div class="mb-3 flex justify-center space-x-3">
+                    <button class="px-3 py-2 rounded bg-green-700 text-white">Signup</button>
+                    <button class="px-3 py-2 rounded bg-amber-500 text-white">Reset</button>
+                </div>
+
+                
+
+
+
+
+
+            </form>
+
+
+        </div>
     </div>
-    
+
+    <script>
+        console.log("Register page");
+    </script>
+
 </body>
+
 </html>

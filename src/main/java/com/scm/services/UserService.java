@@ -11,7 +11,9 @@ public interface UserService {
 
     Optional<User> getUserById(String id);
 
-    Optional<User> deleteUser(String id);
+    void deleteUser(String id);
+
+    Optional<User> updateUser(User user);
 
     boolean isUserExist(String userId);
 

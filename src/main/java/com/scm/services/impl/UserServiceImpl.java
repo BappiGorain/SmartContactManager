@@ -2,6 +2,7 @@ package com.scm.services.impl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +16,7 @@ import com.scm.services.UserService;
 
 @Service
 public class UserServiceImpl implements UserService
-{`
+{
     @Autowired
     private UserRepo userRepo;
 
@@ -23,6 +24,12 @@ public class UserServiceImpl implements UserService
 
     @Override
     public User saveUser(User user) {
+
+        // User id : have to genate
+
+        String userid = UUID.randomUUID().toString();
+        user.setUserId(userid);
+
         return userRepo.save(user);
     }
 

@@ -1,5 +1,6 @@
 package com.scm.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,11 +8,21 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.scm.entities.User;
 import com.scm.forms.UserForm;
+import com.scm.helper.Message;
+import com.scm.helper.MessageType;
+import com.scm.services.UserService;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class PageController 
 {
+
+    @Autowired
+    private UserService userService;
+
     @RequestMapping("/home")
     public String home()
     {
@@ -68,7 +79,7 @@ public class PageController
     // Processing register
 
     @PostMapping("/do-register")
-    public String processingRegister(@ModelAttribute UserForm userForm)
+    public String processingRegister(@ModelAttribute UserForm userForm,HttpSession session)
     {
         System.out.println("Processing registation");
         // Fetch the data
@@ -76,9 +87,37 @@ public class PageController
         System.out.println(userForm);
         // validate form data
         // save to database
-        // User Service
+        // User Service'
+        
+        // UserForm --> User
+        // User user = User.builder()
+        // .name(userForm.getName())
+        // .email(userForm.getEmail())
+        // .password(userForm.getPassword())
+        // .about(userForm.getAbout())
+        // .phoneNumber(userForm.getPhoneNumber())
+        // .profilePic("https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg?semt=ais_items_boosted&w=740")     
+        // .build();
+
+        User user = new User();
+        user.setName(userForm.getName());
+        user.setEmail(userForm.getEmail());
+        user.setAbout(userForm.getAbout());
+        user.setPassword(userForm.getPassword());
+        user.setPhoneNumber(userForm.getPhoneNumber());
+        user.setProfilePic("https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg?semt=ais_items_boosted&w=740");
+
+        User savedUser = userService.saveUser(user);
+
+        System.out.println("Saved user" + savedUser);
 
         // message = "registration successful"
+
+        Message message = Message.builder().content("Registration successful").type(MessageType.blue).build();
+
+        session.setAttribute("message",message);
+
+
         // redirect to login form
 
         return "redirect:/register";

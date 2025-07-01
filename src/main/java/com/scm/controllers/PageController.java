@@ -32,6 +32,12 @@ public class PageController
         return "home";
     }
 
+    @RequestMapping("/")
+    public String index()
+    {
+        return "redirect:/home";
+    }
+
     @RequestMapping("/about")
     public String aboutPage(Model model)
     {

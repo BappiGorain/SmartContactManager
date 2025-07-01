@@ -7,10 +7,12 @@ import java.util.UUID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.scm.controllers.repositories.UserRepo;
 import com.scm.entities.User;
+import com.scm.helper.AppConstants;
 import com.scm.helper.ResourceNotFoundException;
 import com.scm.services.UserService;
 
@@ -19,6 +21,9 @@ public class UserServiceImpl implements UserService
 {
     @Autowired
     private UserRepo userRepo;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -30,6 +35,18 @@ public class UserServiceImpl implements UserService
         String userid = UUID.randomUUID().toString();
         user.setUserId(userid);
 
+        // Encode the password
+
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+
+        // Set the user role
+       user.setRoleList(List.of(AppConstants.ROLE_USER));
+       
+        
+
+        logger.info(user.getProvider().toString());
+
         return userRepo.save(user);
     }
 
@@ -39,7 +56,8 @@ public class UserServiceImpl implements UserService
     }
 
     @Override
-    public Optional<User> updateUser(User user) {
+    public Optional<User> updateUser(User user) 
+    {
 
         User user2 = userRepo.findById(user.getUserId()).orElseThrow(()->new ResourceNotFoundException("User not found"));
         user2.setName(user.getName());
@@ -48,7 +66,7 @@ public class UserServiceImpl implements UserService
         user2.setPhoneNumber(user.getPhoneNumber());
         user2.setAbout(user.getAbout());
         user2.setProfilePic(user.getProfilePic());
-        user2.setEnable(user.isEnable());
+        user2.setEnable(user.isEnabled());
         user2.setEmailVerified(user.isEmailVerified());
         user2.setPhoneVerified(user.isPhoneVerified());
         user2.setProvider(user.getProvider());
@@ -58,7 +76,6 @@ public class UserServiceImpl implements UserService
         User saveduser = userRepo.save(user2);
 
         return Optional.ofNullable(saveduser);
-
 
     }
 
@@ -88,7 +105,5 @@ public class UserServiceImpl implements UserService
     public List<User> getAllUsers() {
         return userRepo.findAll();
     }
-
-    
 
 }

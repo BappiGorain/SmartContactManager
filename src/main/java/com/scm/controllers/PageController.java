@@ -3,6 +3,7 @@ package com.scm.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +16,7 @@ import com.scm.helper.MessageType;
 import com.scm.services.UserService;
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 
 @Controller
 public class PageController 
@@ -79,13 +81,24 @@ public class PageController
     // Processing register
 
     @PostMapping("/do-register")
-    public String processingRegister(@ModelAttribute UserForm userForm,HttpSession session)
+    public String processingRegister(@Valid @ModelAttribute UserForm userForm,BindingResult rBindingResult ,HttpSession session)
     {
         System.out.println("Processing registation");
         // Fetch the data
         // UserForm
         System.out.println(userForm);
         // validate form data
+
+        if(rBindingResult.hasErrors())
+        {
+            return "register";
+        }
+
+
+
+
+
+
         // save to database
         // User Service'
         

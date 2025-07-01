@@ -28,13 +28,20 @@
             <form data-th-action="@{'/do-register'}"
              method="post"
              th:object="${userForm}"
-             class="mt-5">
+             class="mt-5"
+             novalidate
+             >
                 <!-- Name -->
                 <div class="mb-3">
                     <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
                     <input type="text" id="name" th:field="*{name}"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Enter Here" required />
+                        <p 
+                        data-th-if="${#fields.hasErrors('name')}"
+                        data-th-errors="*{name}"
+                        class="text-red-600 px-1 py-2">
+                        </p>
                 </div>
 
                 <!-- Email -->
@@ -44,6 +51,13 @@
                     <input type="email" id="email" th:field="*{email}"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Enter Here" required />
+
+                        <p 
+                        data-th-if="${#fields.hasErrors('email')}"
+                        data-th-errors="*{email}"
+                        class="text-red-600 px-1 py-2">
+                        </p>
+
                 </div>
 
                 <!-- Password -->
@@ -53,6 +67,13 @@
                     <input type="password" id="password" th:field="*{password}"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Enter Here" required />
+
+                        <p 
+                        data-th-if="${#fields.hasErrors('password')}"
+                        data-th-errors="*{password}"
+                        class="text-red-600 px-1 py-2">
+                        </p>
+
                 </div>
 
                 <!-- PhoneNumber -->
@@ -62,6 +83,11 @@
                     <input type="text" id="phone" th:field="*{phoneNumber}"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Enter Here" required />
+                        <p 
+                        data-th-if="${#fields.hasErrors('phoneNumber')}"
+                        data-th-errors="*{phoneNumber}"
+                        class="text-red-600 px-1 py-2">
+                        </p>
                 </div>
 
                 <!-- About -->
@@ -71,6 +97,11 @@
                 <textarea th:field="*{about}" id="about" rows="6"
                     class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Write something about yourself"></textarea>
+                    <p 
+                        data-th-if="${#fields.hasErrors('about')}"
+                        data-th-errors="*{about}"
+                        class="text-red-600 px-1 py-2">
+                        </p>
                 </div>
 
                 <!-- Buttons -->

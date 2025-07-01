@@ -95,10 +95,6 @@ public class PageController
         }
 
 
-
-
-
-
         // save to database
         // User Service'
         
@@ -126,7 +122,7 @@ public class PageController
 
         // message = "registration successful"
 
-        Message message = Message.builder().content("Registration successful").type(MessageType.blue).build();
+        Message message = Message.builder().content("Registration successful").type(MessageType.green).build();
 
         session.setAttribute("message",message);
 

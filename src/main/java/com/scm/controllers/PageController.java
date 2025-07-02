@@ -68,6 +68,9 @@ public class PageController
         return "login";
     }
 
+
+    
+
     @GetMapping("/register")
     public String registerPage(Model model)
     {

@@ -4,9 +4,85 @@
     <title>Login</title>
 </head>
 <body>
-    <div id="content">
-        <h1>Welcome to Login page</h1>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et, commodi.</p>
+    
+     <div id="content" class="flex justify-center items-center px-4 ">
+        <!-- Card -->
+        <div
+            class="w-full max-w-md p-6 bg-white border-t-8  dark:border-green-500 rounded-lg shadow-md hover:shadow-xl dark:bg-gray-800 dark:hover:bg-gray-700 transition-all duration-300">
+
+            <!-- Message here -->
+             <div data-th-replace="message::messagebox"></div>
+
+            <h5 class="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center">
+                Login Here
+            </h5>
+            <p class="text-gray-700 dark:text-gray-400 text-center">
+                Start managing contact on cloud
+            </p>
+
+
+            <div class="text-red-400 text-center my-3" th:if="${param.error}">
+			Invalid username and password.</div>
+		<div class="text-green-400 text-center my-3" th:if="${param.logout}">
+			You have been logged out.</div>
+
+
+            <!--  Form  -->
+            <form              
+                data-th-action="@{'/authenticate'}" method="post" 
+             class="mt-5"
+             >
+                
+                <!-- Username -->
+                <div class="mb-3">
+                    <label for="email"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                    <input 
+                    name="email"
+                    type="email" id="email" 
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Enter Here" required />
+
+                        <!-- <p 
+                        data-th-if="${#fields.hasErrors('email')}"
+                        data-th-errors="*{email}"
+                        class="text-red-600 px-1 py-2">
+                        </p> -->
+
+                </div>
+
+                <!-- Password -->
+                <div class="mb-3">
+                    <label for="password" 
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                    <input
+                     name="password"
+                     type="password" id="password" 
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Enter Here" required />
+
+                        <!-- <p 
+                        data-th-if="${#fields.hasErrors('password')}"
+                        data-th-errors="*{password}"
+                        class="text-red-600 px-1 py-2">
+                        </p> -->
+
+                </div>
+
+                <!-- Buttons -->
+
+                <div class="mb-3 flex justify-center space-x-3">
+                    <button type="submit" class="px-3 py-2 rounded bg-green-700 text-white">Login</button>
+                    <button type="reset" class="px-3 py-2 rounded bg-amber-500 text-white">Reset</button>
+                </div>
+
+            </form>
+
+            <div class="social-buttons-container flex justify-center mt-10 ">
+                <a class=" px-3 py-2 login-with-google-btn" th:href="@{'/oauth2/authorization/google'}">Login With Google</a>
+            </div>
+
+        </div>
     </div>
     
 </body>

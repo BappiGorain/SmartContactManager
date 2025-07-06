@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -21,6 +22,7 @@ import com.scm.helper.AppConstants;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.var;
 
 @Component
 public class OAuthAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
@@ -35,6 +37,92 @@ public class OAuthAuthenticationSuccessHandler implements AuthenticationSuccessH
             Authentication authentication) throws IOException, ServletException 
     {
             logger.info("OAuthAuthenticationSuccesshandler");
+
+
+            // Identify the provider
+
+             var  oauth2AuthenticationToken= (OAuth2AuthenticationToken) authentication;
+             String authorizedClientRegistrationId = oauth2AuthenticationToken.getAuthorizedClientRegistrationId();
+
+             logger.info(authorizedClientRegistrationId);
+
+
+             var oauthUser = (DefaultOAuth2User)authentication.getPrincipal();
+
+            oauthUser.getAttributes().forEach((key,value)->{
+                logger.info(key + " : " + value);
+            });
+
+            User user = new User();
+            user.setUserId(UUID.randomUUID().toString());
+            user.setRoleList(List.of(AppConstants.ROLE_USER));
+            user.setEmailVerified(true);
+            user.setEnable(true);
+
+
+               if (authorizedClientRegistrationId.equalsIgnoreCase("google")) {
+                // google
+                // google attribute
+
+                user.setEmail(oauthUser.getAttribute("email").toString());
+                user.setPassword("dummy");
+                user.setProfilePic(oauthUser.getAttribute("picture").toString());
+                user.setName(oauthUser.getAttribute("name").toString());
+                user.setProviderUserId(oauthUser.getName());
+                user.setAbout("This account is created using google");
+                user.setProvider(Providers.GOOGLE);
+                
+             }
+
+              if (authorizedClientRegistrationId.equalsIgnoreCase("github")) {
+                // github
+                // github attribute
+
+              String email = oauthUser.getAttribute("email") != null 
+                        ? oauthUser.getAttribute("email").toString() 
+                                 : oauthUser.getAttribute("login").toString() + "@github.com";
+
+                
+               String picture = oauthUser.getAttribute("avatar_url").toString();
+               String name = oauthUser.getAttribute("login").toString();
+               String providerUserId = oauthUser.getName();
+
+               user.setEmail(email);
+               user.setPassword("dummy");
+               user.setProfilePic(picture);
+               user.setAbout("This user is created using githhub");
+               user.setName(name);
+               user.setProviderUserId(providerUserId);
+               user.setProvider(Providers.GITHUB);
+                
+                
+             }
+             else if (authorizedClientRegistrationId.equalsIgnoreCase("linkedin")) {
+                // linkedIn
+                // linkedIn attribute
+             }
+             else if (authorizedClientRegistrationId.equalsIgnoreCase("facebook")) {
+                // facebook
+                // facebook attribute
+             }
+             else
+             {
+                logger.info("OAuthAuthenticationSuccessHandler : unknown provider");
+             }
+
+            User user2 = userRepo.findByEmail(user.getEmail()).orElse(null);
+            if(user2==null)
+            {
+               System.out.println("User saved + " + user.getEmail());
+               userRepo.save(user); 
+            }
+
+            new DefaultRedirectStrategy().sendRedirect(request, response, "/user/profile");
+
+
+             
+
+            /*
 
 
             DefaultOAuth2User  user = (DefaultOAuth2User)authentication.getPrincipal();
@@ -73,13 +161,14 @@ public class OAuthAuthenticationSuccessHandler implements AuthenticationSuccessH
                 userRepo.save(user1); 
                 logger.info("user Saved : " + email);
             }
+
+             
             
             new DefaultRedirectStrategy().sendRedirect(request, response, "/user/profile");
 
+            */
+
+
     }
-
-
-
-    
 
 }

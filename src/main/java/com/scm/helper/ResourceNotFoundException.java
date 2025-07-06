@@ -1,5 +1,6 @@
 package com.scm.helper;
 
+
 public class ResourceNotFoundException extends RuntimeException
 {
 

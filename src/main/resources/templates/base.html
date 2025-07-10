@@ -14,8 +14,17 @@ lang="en">
 <body class="dark:bg-gray-900 bg-gray-100 dark:text-white">
 
     <!-- Common header -->
+
+    <div th:if="${loggedInUser}">
+        <div data-th-replace="~{user/user_navbar::user-navbar}"></div>
+    </div>
+
+    <div th:unless="${loggedInUser}">
+        <div data-th-replace="~{navbar::navbar}"></div>
+    </div>
+
    
-    <div data-th-replace="navbar :: navbar"></div>
+    
 
 
     <!-- Main Content -->

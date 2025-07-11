@@ -29,7 +29,8 @@
                         <p class="text-gray-500">This contact will be stored on cloud, you can directly email this
                             client from scm...</p>
 
-                        <form action="" class="mt-8">
+                        <form action="" class="mt-8" data-th-action="@{'/user/contacts/add'}"
+                            data-th-object="${contactForm}" method="post">
 
                             <!-- Name form -->
 
@@ -40,9 +41,9 @@
                                 <div class="flex">
                                     <span
                                         class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
-                                        <i class="fa-solid fa-user h-4 w-4"></i>
+                                        <i class="fa-solid fa-user fa-bounce h-4 w-4" style="color: #74C0FC;"></i>
                                     </span>
-                                    <input type="text" id="website-admin"
+                                    <input data-th-field="*{name}" type="text"
                                         class="rounded-none rounded-e-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="Name">
                                 </div>
@@ -58,9 +59,9 @@
                                 <div class="flex">
                                     <span
                                         class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
-                                        <i class="fa-solid fa-envelope h-4 w-4"></i>
+                                        <i class="fa-solid fa-envelope fa-beat h-4 w-4" style="color: #4cb898;"></i>
                                     </span>
-                                    <input type="text" id="website-admin"
+                                    <input type="text" data-th-field="*{email}"
                                         class="rounded-none rounded-e-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="abc@gmail.com">
                                 </div>
@@ -76,9 +77,9 @@
                                 <div class="flex">
                                     <span
                                         class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
-                                        <i class="fa-solid fa-phone h-4 w-4"></i>
+                                        <i class="fa-solid fa-phone fa-shake h-4 w-4" style="color: #B197FC;"></i>
                                     </span>
-                                    <input type="text" id="website-admin"
+                                    <input type="text" data-th-field="*{phoneNumber}"
                                         class="rounded-none rounded-e-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="1234567890">
                                 </div>
@@ -90,7 +91,7 @@
                                 <label for="message"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contact
                                     Address</label>
-                                <textarea id="message" rows="4"
+                                <textarea rows="4" data-th-field="*{address}"
                                     class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Contact Address"></textarea>
 
@@ -102,7 +103,7 @@
                                 <label for="message"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contact
                                     Description</label>
-                                <textarea id="message" rows="4"
+                                <textarea rows="4" data-th-field="*{description}"
                                     class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Write about your contact..."></textarea>
 
@@ -113,18 +114,18 @@
                             <div class="flex space-x-3 mb-3">
                                 <div class="w-full">
 
-                                    <!-- facebook link -->
+                                    <!-- website link -->
 
                                     <div class="mb-3">
 
                                         <div class="flex">
                                             <span
                                                 class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
-                                                <i class="fa-brands fa-facebook h-4 w-4"></i>
+                                                <i class="fa-solid fa-earth-americas fa-spin w-4 h-4"></i>
                                             </span>
-                                            <input type="text" id="website-admin"
+                                            <input type="text" data-th-field="*{websiteLink}"
                                                 class="rounded-none rounded-e-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                placeholder="facebook link">
+                                                placeholder="website link">
                                         </div>
                                     </div>
                                 </div>
@@ -138,9 +139,10 @@
                                         <div class="flex">
                                             <span
                                                 class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
-                                                <i class="fa-brands fa-linkedin h-4 w-4"></i>
+                                                <i class="fa-brands fa-linkedin fa-bounce h-4 w-4"
+                                                    style="color: #B197FC;"></i>
                                             </span>
-                                            <input type="text" id="website-admin"
+                                            <input type="text" data-th-field="*{linkedInLink}"
                                                 class="rounded-none rounded-e-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                 placeholder="linkedIn link">
                                         </div>
@@ -151,26 +153,31 @@
                             <!-- Contact Image field -->
 
                             <div class="mb-3">
-                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="small_size">Contact Image</label>
-<input class="block w-full mb-5 text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="small_size" type="file">
+                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                                    for="small_size">Contact Image</label>
+                                <input
+                                    class="block w-full mb-5 text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                                    id="small_size" type="file">
                             </div>
 
                             <!-- Favorite cheakbox -->
 
                             <div class="flex items-center mb-3">
-                                <input id="default-checkbox" type="checkbox" value=""
+                                <input id="default-checkbox" type="checkbox"  data-th-field="*{favorite}"
                                     class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                 <label for="default-checkbox"
                                     class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                                     Is this your contact favorite one? </label>
                             </div>
- 
+
                             <div class="button-container text-center">
-                                <button type="submit" class="px-3 py-2 rounded dark:bg-blue-600 hover:dark:bg-blue-700 bg-black text-white">
+                                <button type="submit"
+                                    class="px-3 py-2 rounded dark:bg-blue-600 hover:dark:bg-blue-700 bg-black text-white">
                                     Add Contact
                                 </button>
 
-                                <button type="reset" class="px-3 py-2 rounded dark:bg-blue-600 hover:dark:bg-blue-700 bg-black text-white">
+                                <button type="reset"
+                                    class="px-3 py-2 rounded dark:bg-blue-600 hover:dark:bg-blue-700 bg-black text-white">
                                     Reset
                                 </button>
 

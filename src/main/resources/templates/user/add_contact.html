@@ -21,15 +21,17 @@
                 <div class="col-span-3"></div>
                 <div class="col-span-12 md:col-span-6">
 
-
-
+                    
                     <div
                         class="cardblock p-6 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                        <h1 class="text-2xl font-semibold">Add new Contacts</h1>
-                        <p class="text-gray-500">This contact will be stored on cloud, you can directly email this
+                        
+                        <h1 class="text-2xl font-semibold text-center">Add new Contacts</h1>
+                        <p class="text-gray-500 text-center">This contact will be stored on cloud, you can directly email this
                             client from scm...</p>
 
-                        <form action="" class="mt-8" data-th-action="@{'/user/contacts/add'}"
+                        <div  data-th-replace="message::messagebox"></div>
+
+                        <form action="" class="mt-5" data-th-action="@{'/user/contacts/add'}"
                             data-th-object="${contactForm}" method="post">
 
                             <!-- Name form -->
@@ -47,6 +49,10 @@
                                         class="rounded-none rounded-e-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="Name">
                                 </div>
+                                <p class="text-red-500"
+                                    data-th-if="${#fields.hasErrors('name')}"
+                                    data-th-errors="*{name}"
+                                >Invalid Name</p>
                             </div>
 
 
@@ -65,6 +71,10 @@
                                         class="rounded-none rounded-e-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="abc@gmail.com">
                                 </div>
+                                <p class="text-red-500"
+                                    data-th-if="${#fields.hasErrors('email')}"
+                                    data-th-errors="*{email}"
+                                >Invalid Email</p>
                             </div>
 
 
@@ -83,6 +93,10 @@
                                         class="rounded-none rounded-e-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="1234567890">
                                 </div>
+                                <p class="text-red-500"
+                                    data-th-if="${#fields.hasErrors('phoneNumber')}"
+                                    data-th-errors="*{phoneNumber}"
+                                >Invalid Phone Number</p>
                             </div>
 
                             <!-- Contact Address -->
@@ -157,7 +171,8 @@
                                     for="small_size">Contact Image</label>
                                 <input
                                     class="block w-full mb-5 text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                    id="small_size" type="file">
+                                    data-th-field="*{contactImage}"
+                                    type="file">
                             </div>
 
                             <!-- Favorite cheakbox -->

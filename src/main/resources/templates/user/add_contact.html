@@ -32,7 +32,9 @@
                         <div  data-th-replace="message::messagebox"></div>
 
                         <form action="" class="mt-5" data-th-action="@{'/user/contacts/add'}"
-                            data-th-object="${contactForm}" method="post">
+                            data-th-object="${contactForm}" method="post"
+                            enctype="multipart/form-data"
+                            >
 
                             <!-- Name form -->
 
@@ -170,9 +172,12 @@
                                 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                                     for="small_size">Contact Image</label>
                                 <input
+                                id="image_file_input"
                                     class="block w-full mb-5 text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                                     data-th-field="*{contactImage}"
                                     type="file">
+
+                                    <img class="max-h-52 mx-auto rounded-lg shadow m-3" src="" id="upload_image_preview" alt="">
                             </div>
 
                             <!-- Favorite cheakbox -->
@@ -205,6 +210,7 @@
             </div>
         </div>
 
+        <script data-th-src="@{'/js/admin.js'}"></script>
         <script>
             console.log("This is a profile page");
         </script>

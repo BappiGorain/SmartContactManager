@@ -20,7 +20,11 @@ public interface ContactService {
 
     void delete(String id);
 
-    List<Contact> search(String name, String email,String phpneNumber);
+    Page<Contact> searchByName(String name,int size, int page, String sortBy,String order,User user);
+
+    Page<Contact> searchByEmail(String email,int size, int page, String sortBy,String order,User user);
+
+    Page<Contact> searchByPhoneNumber(String phoneNumber,int size, int page, String sortBy,String order,User user);
 
     List<Contact> getByUserId(String userId);
 

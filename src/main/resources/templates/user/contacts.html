@@ -101,7 +101,8 @@
                                     <td class="px-6 py-4">
                                         <a href><i class="fa-solid w-6 h-6 fa-trash"></i></a>
                                         <a href><i class="fa-solid w-6 h-6 fa-pen"></i></a>
-                                        <a href><i class="fa-solid w-6 h-6 fa-eye"></i></a>
+                                        <button th:data-id="${c.id}"
+                                        th:onclick="loadContactdata(this.getAttribute('data-id'))" ><i class="fa-solid w-6 h-6 fa-eye"></i></button>
                                     </td>
                                 </tr>
 
@@ -153,22 +154,15 @@
                                 </ul>
                             </nav>
                         </div>
-                        <h1 class="text-4xl font-bold text-gray-700 dark:text-gray-200 mb-4">
-        No Result Found 😔
-    </h1>
-    <img src="https://media.giphy.com/media/14uQ3cOFteDaU/giphy.gif" 
-         alt="No Results" 
-         class="w-64 h-64 object-contain rounded-lg shadow-lg border border-gray-300 dark:border-gray-600">
-</div>
-
                     </div>
 
                 </div>
 
             </div>
+            <div data-th-replace="~{user/contact_modals :: contact}"></div>
         </div>
     </div>
-
+   <script th:src="@{'/js/contacts.js'}"></script>
     <script>
         console.log("This is a profile page");
     </script>

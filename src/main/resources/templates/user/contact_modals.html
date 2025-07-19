@@ -1,0 +1,55 @@
+<div data-th-fragment="contact">
+
+    <!-- Main modal -->
+    <div id="view_contact_modal" tabindex="-1" aria-hidden="true"
+        class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm overflow-y-auto overflow-x-hidden p-4">
+        
+        <div class="relative w-full max-w-2xl bg-white rounded-2xl shadow-lg dark:bg-gray-800">
+            
+            <!-- Modal header -->
+            <div class="flex items-start justify-between p-6 border-b border-gray-200 dark:border-gray-700">
+                <div>
+                    <h3 id="contact_name" class="text-2xl font-bold text-gray-900 dark:text-white text-center">
+    Contact Details
+</h3>
+
+                    <p id="contact_email" class="text-sm text-gray-500 dark:text-gray-300"></p>
+                </div>
+                <button type="button" 
+                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 inline-flex justify-center items-center dark:hover:bg-gray-700 dark:hover:text-white"
+                        onclick="closeContactModal()">
+                    <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" aria-hidden="true">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M1 1l6 6m0 0l6-6M7 7l6 6M7 7l-6 6" />
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+            
+            <!-- Modal body -->
+            <div class="p-6 space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <p class="text-gray-700 dark:text-gray-300"><strong>Phone:</strong> <span id="contact_phoneNumber"></span></p>
+                    <p class="text-gray-700 dark:text-gray-300"><strong>Address:</strong> <span id="contact_address"></span></p>
+                    <p class="text-gray-700 dark:text-gray-300"><strong>Description:</strong> <span id="contact_description"></span></p>
+                    <p class="text-gray-700 dark:text-gray-300"><strong>Favorite:</strong> <span id="contact_favorite"></span></p>
+                    <p class="text-gray-700 dark:text-gray-300"><strong>Website:</strong> <a id="contact_websiteLink" href="#" target="_blank" class="text-blue-600 hover:underline"></a></p>
+                    <p class="text-gray-700 dark:text-gray-300"><strong>LinkedIn:</strong> <a id="contact_linkedInLink" href="#" target="_blank" class="text-blue-600 hover:underline"></a></p>
+                </div>
+            </div>
+            
+            <!-- Modal footer -->
+            <div class="flex items-center justify-end p-6 border-t border-gray-200 dark:border-gray-700 space-x-3">
+                <button type="button" 
+                        class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-800"
+                        onclick="closeContactModal()">
+                    Close
+                </button>
+                <button type="button"
+                        class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500">
+                    Save
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
